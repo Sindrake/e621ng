@@ -1,0 +1,17 @@
+version = 1
+
+[[analyzers]]
+name = "ruby"
+
+[[analyzers]]
+name = "javascript"
+
+  [analyzers.meta]
+  plugins = ["vue"]
+  environment = [
+    "browser",
+    "jquery"
+  ]
+
+[[analyzers]]
+name = "shell"
