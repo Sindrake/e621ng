@@ -1,9 +1,15 @@
 # .github/workflows/rubocop-todo-regenerator.yml
 name: rubocop-todo
+
 on:
   schedule:
     - cron: "0 6 * * WED"
   workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   docker-build:
     runs-on: ubuntu-22.04
@@ -26,3 +32,5 @@ jobs:
       - uses: ./.github/prepare-docker-image
       - name: Generate rubocop TODOs
         run: $DOCKER_RUN rubocop --auto-gen-config --auto-gen-only-exclude --exclude-limit 20000
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
