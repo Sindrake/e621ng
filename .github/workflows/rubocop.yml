@@ -1,0 +1,13 @@
+# .github/workflows/rubocop-todo-regenerator.yml
+name: rubocop-todo
+on:
+  schedule:
+    - cron: "0 6 * * WED"
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ydah/rubocop-todo-regenerator@main
+        with:
+          triggered_label: "rubocop"
+          preparation_command: "rubocop --auto-gen-config --auto-gen-only-exclude --exclude-limit 20000"
