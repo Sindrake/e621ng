@@ -8,7 +8,6 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - uses: ydah/rubocop-todo-regenerator@main
-        with:
-          triggered_label: "rubocop"
-          preparation_command: "rubocop --auto-gen-config --auto-gen-only-exclude --exclude-limit 20000"
+      - uses: actions/checkout@v4
+      - name: Generate rubocop TODOs
+        run: rubocop --auto-gen-config --auto-gen-only-exclude --exclude-limit 20000
